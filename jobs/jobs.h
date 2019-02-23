@@ -23,6 +23,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <pthread.h>
 #include <semaphore.h>
 #include "net/net-events.h"
 #include "net/net-msg.h"
@@ -231,7 +232,8 @@ struct job_thread {
   long long jobs_created;
   long long jobs_active;
   int thread_system_id;
-  struct drand48_data rand_data;
+  unsigned short rand_xsubi[3];
+  //struct drand48_data rand_data;
   job_t timer_manager;
   double wakeup_time;
   struct job_class *job_class;
